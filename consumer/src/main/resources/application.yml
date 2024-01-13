@@ -1,0 +1,13 @@
+spring:
+  rabbitmq:
+    host: 127.0.0.1 # 你的虚拟机IP
+    port: 5672 # 端口
+    virtual-host: /kagome # 虚拟主机
+    username: yll # 用户名
+    password: 123 # 密码
+#Work模型的使用：
+#多个消费者绑定到一个队列，同一条消息只会被一个消费者处理
+#通过设置prefetch来控制消费者预取的消息数量
+    listener:
+      simple:
+        prefetch: 1 # 每次只能获取一条消息，处理完成才能获取下一个消息 避免消息积压
